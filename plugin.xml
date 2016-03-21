@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.devblocks.com/schema/plugin.xsd">
+	<id>25th-floor.slack</id>
+	<name>Slack Integration</name>
+	<description>This plugin provides integration with Slack via their WebHooks. It is intended to be a bridge used by other plugins to communicate with Slack services. In addition, a new Virtual Attendant action is added for posting automated messages to a Slack channel or person.</description>
+	<author>25th-floor GmbH</author>
+	<version>0.0.1</version>
+	<link>https://25th-floor.com/</link>
+	<image>plugin.png</image>
+
+	<!-- Requirements -->
+
+	<requires>
+		<app_version min="7.1" max="7.1.99" />
+		<php_extension name="curl" />
+	</requires>
+
+	<!-- Plugin Dependencies -->
+
+	<dependencies>
+		<require plugin_id="cerberusweb.core" version="7.0.0" />
+	</dependencies>
+
+	<!-- Exported Classes -->
+
+	<class_loader>
+		<file path="api/App.php">
+			<class name="TwentyfifthfloorSlack_API" />
+		</file>
+	</class_loader>
+
+	<!-- Extensions -->
+
+	<extensions>
+		<!-- Plugin Setup -->
+
+		<extension point="cerberusweb.plugin.setup">
+			<id>25th-floorslack.setup</id>
+			<name>Setup</name>
+			<class>
+				<file>api/App.php</file>
+				<name>TwentyfifthfloorSlack_Setup</name>
+			</class>
+			<params>
+				<param key="tab_label" value="25th-floor.slack.common" />
+			</params>
+		</extension>
+
+		<!-- Event Actions -->
+
+		<extension point="devblocks.event.action">
+			<id>25th-floorslack.event.action.post</id>
+			<name>Post to Slack</name>
+			<class>
+				<file>api/App.php</file>
+				<name>TwentyfifthfloorSlack_EventActionPost</name>
+			</class>
+			<params>
+				<param key="label" value="Post to Slack" />
+				<param key="events">
+					<value>
+						<data key="*" />
+					</value>
+				</param>
+			</params>
+		</extension>
+	</extensions>
+</plugin>
