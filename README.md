@@ -3,7 +3,7 @@ Cerb: Slack Integration Plugin
  
 This plugin is modeled after the [HipChat plugin](http://cerberusweb.com/book/latest/plugins/wgm.hipchat.html) and adds an action to the Cerb event system (Virtual Attendants).
 
-To install the plugin download the ZIP or clone the plugin to `/path/to/your/cerb/installation/storage/plugins/25th-floor.slack`. It is important that the plugin's directory is named `25th-floor.slack/`.
+To install the plugin download the ZIP or clone the plugin to `/path/to/your/cerb/installation/storage/plugins/25th-floor.slack`. It is important that the plugin's directory is named `25th-floor.slack`.
 
 Afterwards you can enable and configure the plugin in the Cerb settings.
 
